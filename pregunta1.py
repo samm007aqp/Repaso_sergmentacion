@@ -11,6 +11,13 @@ img2 = cv2.cvtColor(img2,cv2.COLOR_BGR2GRAY)
 img = img[:,0:-1]
 row, col = img.shape
 print(col)
+def filtro(img,row,col,val):
+	for i in range (row):
+		for j in range(col):
+			if img[i,j] > val:
+				img[i,j] = 255
+			else:
+				img[i,j] = img[i,j]
 
 def divition(img,img2):
 	img = img/img2
@@ -20,7 +27,9 @@ def divition(img,img2):
 	#maxi = 255//maxi
 	print(maxi)
 	img = img*255
+	filtro(img,row,col,210)
 	cv2.imwrite("salida.jpg",img)
+
 
 def resta(img,img2):
 	img =  img2-img
